@@ -1,3 +1,5 @@
+**WARNING: This repository is not throughly tested! And it's 90% AI-generated. I don't recommend using it yet.**
+
 # APPS Evaluation Pipeline
 
 A streamlined pipeline for testing Python code on the APPS dataset on RunPod. This project provides a clean, efficient, and safe way to evaluate code submissions against the APPS dataset test cases.
