@@ -1,0 +1,518 @@
+Collecting unsloth
+  Downloading unsloth-2025.2.12-py3-none-any.whl.metadata (57 kB)
+Collecting unsloth_zoo>=2025.2.5 (from unsloth)
+  Downloading unsloth_zoo-2025.2.5-py3-none-any.whl.metadata (16 kB)
+Requirement already satisfied: torch>=2.4.0 in /usr/local/lib/python3.12/dist-packages (from unsloth) (2.5.1)
+Requirement already satisfied: xformers>=0.0.27.post2 in /usr/local/lib/python3.12/dist-packages (from unsloth) (0.0.28.post3)
+Requirement already satisfied: bitsandbytes in /usr/local/lib/python3.12/dist-packages (from unsloth) (0.45.1)
+Requirement already satisfied: triton>=3.0.0 in /usr/local/lib/python3.12/dist-packages (from unsloth) (3.1.0)
+Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packages (from unsloth) (24.2)
+Collecting tyro (from unsloth)
+  Downloading tyro-0.9.14-py3-none-any.whl.metadata (9.4 kB)
+Requirement already satisfied: transformers!=4.47.0,>=4.46.1 in /usr/local/lib/python3.12/dist-packages (from unsloth) (4.48.2)
+Collecting datasets>=2.16.0 (from unsloth)
+  Downloading datasets-3.3.1-py3-none-any.whl.metadata (19 kB)
+Requirement already satisfied: sentencepiece>=0.2.0 in /usr/local/lib/python3.12/dist-packages (from unsloth) (0.2.0)
+Requirement already satisfied: tqdm in /usr/local/lib/python3.12/dist-packages (from unsloth) (4.67.1)
+Requirement already satisfied: psutil in /usr/local/lib/python3.12/dist-packages (from unsloth) (6.1.1)
+Collecting wheel>=0.42.0 (from unsloth)
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Requirement already satisfied: numpy in /usr/local/lib/python3.12/dist-packages (from unsloth) (1.26.4)
+Requirement already satisfied: accelerate>=0.34.1 in /usr/local/lib/python3.12/dist-packages (from unsloth) (1.3.0)
+Collecting trl!=0.9.0,!=0.9.1,!=0.9.2,!=0.9.3,>=0.7.9 (from unsloth)
+  Downloading trl-0.15.1-py3-none-any.whl.metadata (11 kB)
+Collecting peft!=0.11.0,>=0.7.1 (from unsloth)
+  Downloading peft-0.14.0-py3-none-any.whl.metadata (13 kB)
+Collecting protobuf<4.0.0 (from unsloth)
+  Downloading protobuf-3.20.3-py2.py3-none-any.whl.metadata (720 bytes)
+Requirement already satisfied: huggingface_hub in /usr/local/lib/python3.12/dist-packages (from unsloth) (0.28.1)
+Requirement already satisfied: hf_transfer in /usr/local/lib/python3.12/dist-packages (from unsloth) (0.1.9)
+Collecting diffusers (from unsloth)
+  Downloading diffusers-0.32.2-py3-none-any.whl.metadata (18 kB)
+Requirement already satisfied: torchvision in /usr/local/lib/python3.12/dist-packages (from unsloth) (0.20.1)
+Requirement already satisfied: pyyaml in /usr/local/lib/python3.12/dist-packages (from accelerate>=0.34.1->unsloth) (6.0.2)
+Requirement already satisfied: safetensors>=0.4.3 in /usr/local/lib/python3.12/dist-packages (from accelerate>=0.34.1->unsloth) (0.5.2)
+Requirement already satisfied: filelock in /usr/local/lib/python3.12/dist-packages (from datasets>=2.16.0->unsloth) (3.17.0)
+Collecting pyarrow>=15.0.0 (from datasets>=2.16.0->unsloth)
+  Downloading pyarrow-19.0.1-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (3.3 kB)
+Collecting dill<0.3.9,>=0.3.0 (from datasets>=2.16.0->unsloth)
+  Downloading dill-0.3.8-py3-none-any.whl.metadata (10 kB)
+Collecting pandas (from datasets>=2.16.0->unsloth)
+  Downloading pandas-2.2.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (89 kB)
+Requirement already satisfied: requests>=2.32.2 in /usr/local/lib/python3.12/dist-packages (from datasets>=2.16.0->unsloth) (2.32.3)
+Collecting xxhash (from datasets>=2.16.0->unsloth)
+  Downloading xxhash-3.5.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (12 kB)
+Collecting multiprocess<0.70.17 (from datasets>=2.16.0->unsloth)
+  Downloading multiprocess-0.70.16-py312-none-any.whl.metadata (7.2 kB)
+Collecting fsspec<=2024.12.0,>=2023.1.0 (from fsspec[http]<=2024.12.0,>=2023.1.0->datasets>=2.16.0->unsloth)
+  Downloading fsspec-2024.12.0-py3-none-any.whl.metadata (11 kB)
+Requirement already satisfied: aiohttp in /usr/local/lib/python3.12/dist-packages (from datasets>=2.16.0->unsloth) (3.11.12)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in /usr/local/lib/python3.12/dist-packages (from huggingface_hub->unsloth) (4.12.2)
+Requirement already satisfied: networkx in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (3.4.2)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (3.1.5)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (12.4.127)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (12.4.127)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (12.4.127)
+Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (9.1.0.70)
+Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (12.4.5.8)
+Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (11.2.1.3)
+Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (10.3.5.147)
+Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (11.6.1.9)
+Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (12.3.1.170)
+Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (2.21.5)
+Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (12.4.127)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (12.4.127)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (75.8.0)
+Requirement already satisfied: sympy==1.13.1 in /usr/local/lib/python3.12/dist-packages (from torch>=2.4.0->unsloth) (1.13.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /usr/local/lib/python3.12/dist-packages (from sympy==1.13.1->torch>=2.4.0->unsloth) (1.3.0)
+Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.12/dist-packages (from transformers!=4.47.0,>=4.46.1->unsloth) (2024.11.6)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in /usr/local/lib/python3.12/dist-packages (from transformers!=4.47.0,>=4.46.1->unsloth) (0.21.0)
+Requirement already satisfied: rich in /usr/local/lib/python3.12/dist-packages (from trl!=0.9.0,!=0.9.1,!=0.9.2,!=0.9.3,>=0.7.9->unsloth) (13.9.4)
+Collecting cut_cross_entropy (from unsloth_zoo>=2025.2.5->unsloth)
+  Downloading cut_cross_entropy-25.1.1-py3-none-any.whl.metadata (9.3 kB)
+Requirement already satisfied: pillow in /usr/local/lib/python3.12/dist-packages (from unsloth_zoo>=2025.2.5->unsloth) (10.4.0)
+Requirement already satisfied: importlib-metadata in /usr/lib/python3/dist-packages (from diffusers->unsloth) (4.6.4)
+Collecting docstring-parser>=0.15 (from tyro->unsloth)
+  Downloading docstring_parser-0.16-py3-none-any.whl.metadata (3.0 kB)
+Collecting shtab>=1.5.6 (from tyro->unsloth)
+  Downloading shtab-1.7.1-py3-none-any.whl.metadata (7.3 kB)
+Collecting typeguard>=4.0.0 (from tyro->unsloth)
+  Downloading typeguard-4.4.2-py3-none-any.whl.metadata (3.8 kB)
+Requirement already satisfied: aiohappyeyeballs>=2.3.0 in /usr/local/lib/python3.12/dist-packages (from aiohttp->datasets>=2.16.0->unsloth) (2.4.4)
+Requirement already satisfied: aiosignal>=1.1.2 in /usr/local/lib/python3.12/dist-packages (from aiohttp->datasets>=2.16.0->unsloth) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in /usr/local/lib/python3.12/dist-packages (from aiohttp->datasets>=2.16.0->unsloth) (25.1.0)
+Requirement already satisfied: frozenlist>=1.1.1 in /usr/local/lib/python3.12/dist-packages (from aiohttp->datasets>=2.16.0->unsloth) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in /usr/local/lib/python3.12/dist-packages (from aiohttp->datasets>=2.16.0->unsloth) (6.1.0)
+Requirement already satisfied: propcache>=0.2.0 in /usr/local/lib/python3.12/dist-packages (from aiohttp->datasets>=2.16.0->unsloth) (0.2.1)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in /usr/local/lib/python3.12/dist-packages (from aiohttp->datasets>=2.16.0->unsloth) (1.18.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in /usr/local/lib/python3.12/dist-packages (from requests>=2.32.2->datasets>=2.16.0->unsloth) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.12/dist-packages (from requests>=2.32.2->datasets>=2.16.0->unsloth) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /usr/local/lib/python3.12/dist-packages (from requests>=2.32.2->datasets>=2.16.0->unsloth) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.12/dist-packages (from requests>=2.32.2->datasets>=2.16.0->unsloth) (2025.1.31)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /usr/local/lib/python3.12/dist-packages (from rich->trl!=0.9.0,!=0.9.1,!=0.9.2,!=0.9.3,>=0.7.9->unsloth) (3.0.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /usr/local/lib/python3.12/dist-packages (from rich->trl!=0.9.0,!=0.9.1,!=0.9.2,!=0.9.3,>=0.7.9->unsloth) (2.19.1)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.12/dist-packages (from jinja2->torch>=2.4.0->unsloth) (3.0.2)
+Requirement already satisfied: python-dateutil>=2.8.2 in /usr/local/lib/python3.12/dist-packages (from pandas->datasets>=2.16.0->unsloth) (2.9.0.post0)
+Collecting pytz>=2020.1 (from pandas->datasets>=2.16.0->unsloth)
+  Downloading pytz-2025.1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas->datasets>=2.16.0->unsloth)
+  Downloading tzdata-2025.1-py2.py3-none-any.whl.metadata (1.4 kB)
+Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.12/dist-packages (from markdown-it-py>=2.2.0->rich->trl!=0.9.0,!=0.9.1,!=0.9.2,!=0.9.3,>=0.7.9->unsloth) (0.1.2)
+Requirement already satisfied: six>=1.5 in /usr/lib/python3/dist-packages (from python-dateutil>=2.8.2->pandas->datasets>=2.16.0->unsloth) (1.16.0)
+Downloading unsloth-2025.2.12-py3-none-any.whl (187 kB)
+Downloading datasets-3.3.1-py3-none-any.whl (484 kB)
+Downloading peft-0.14.0-py3-none-any.whl (374 kB)
+Downloading protobuf-3.20.3-py2.py3-none-any.whl (162 kB)
+Downloading trl-0.15.1-py3-none-any.whl (318 kB)
+Downloading unsloth_zoo-2025.2.5-py3-none-any.whl (105 kB)
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Downloading diffusers-0.32.2-py3-none-any.whl (3.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 137.7 MB/s eta 0:00:00
+Downloading tyro-0.9.14-py3-none-any.whl (116 kB)
+Downloading dill-0.3.8-py3-none-any.whl (116 kB)
+Downloading docstring_parser-0.16-py3-none-any.whl (36 kB)
+Downloading fsspec-2024.12.0-py3-none-any.whl (183 kB)
+Downloading multiprocess-0.70.16-py312-none-any.whl (146 kB)
+Downloading pyarrow-19.0.1-cp312-cp312-manylinux_2_28_x86_64.whl (42.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.1/42.1 MB 21.3 MB/s eta 0:00:00
+Downloading shtab-1.7.1-py3-none-any.whl (14 kB)
+Downloading typeguard-4.4.2-py3-none-any.whl (35 kB)
+Downloading cut_cross_entropy-25.1.1-py3-none-any.whl (22 kB)
+Downloading pandas-2.2.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.7/12.7 MB 52.3 MB/s eta 0:00:00
+Downloading xxhash-3.5.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (194 kB)
+Downloading pytz-2025.1-py2.py3-none-any.whl (507 kB)
+Downloading tzdata-2025.1-py2.py3-none-any.whl (346 kB)
+Installing collected packages: pytz, xxhash, wheel, tzdata, typeguard, shtab, pyarrow, protobuf, fsspec, docstring-parser, dill, pandas, multiprocess, tyro, diffusers, datasets, cut_cross_entropy, trl, peft, unsloth_zoo, unsloth
+  Attempting uninstall: wheel
+    Found existing installation: wheel 0.37.1
+    Uninstalling wheel-0.37.1:
+      Successfully uninstalled wheel-0.37.1
+  Attempting uninstall: protobuf
+    Found existing installation: protobuf 5.29.3
+    Uninstalling protobuf-5.29.3:
+      Successfully uninstalled protobuf-5.29.3
+  Attempting uninstall: fsspec
+    Found existing installation: fsspec 2025.2.0
+    Uninstalling fsspec-2025.2.0:
+      Successfully uninstalled fsspec-2025.2.0
+  Attempting uninstall: dill
+    Found existing installation: dill 0.3.9
+    Uninstalling dill-0.3.9:
+      Successfully uninstalled dill-0.3.9
+Successfully installed cut_cross_entropy-25.1.1 datasets-3.3.1 diffusers-0.32.2 dill-0.3.8 docstring-parser-0.16 fsspec-2024.12.0 multiprocess-0.70.16 pandas-2.2.3 peft-0.14.0 protobuf-3.20.3 pyarrow-19.0.1 pytz-2025.1 shtab-1.7.1 trl-0.15.1 typeguard-4.4.2 tyro-0.9.14 tzdata-2025.1 unsloth-2025.2.12 unsloth_zoo-2025.2.5 wheel-0.45.1 xxhash-3.5.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[notice] A new release of pip is available: 25.0 -> 25.0.1
+[notice] To update, run: python3.12 -m pip install --upgrade pip
+Requirement already satisfied: vllm in /usr/local/lib/python3.12/dist-packages (0.7.2)
+Requirement already satisfied: psutil in /usr/local/lib/python3.12/dist-packages (from vllm) (6.1.1)
+Requirement already satisfied: sentencepiece in /usr/local/lib/python3.12/dist-packages (from vllm) (0.2.0)
+Requirement already satisfied: numpy<2.0.0 in /usr/local/lib/python3.12/dist-packages (from vllm) (1.26.4)
+Requirement already satisfied: requests>=2.26.0 in /usr/local/lib/python3.12/dist-packages (from vllm) (2.32.3)
+Requirement already satisfied: tqdm in /usr/local/lib/python3.12/dist-packages (from vllm) (4.67.1)
+Requirement already satisfied: blake3 in /usr/local/lib/python3.12/dist-packages (from vllm) (1.0.4)
+Requirement already satisfied: py-cpuinfo in /usr/local/lib/python3.12/dist-packages (from vllm) (9.0.0)
+Requirement already satisfied: transformers>=4.48.2 in /usr/local/lib/python3.12/dist-packages (from vllm) (4.48.2)
+Requirement already satisfied: tokenizers>=0.19.1 in /usr/local/lib/python3.12/dist-packages (from vllm) (0.21.0)
+Requirement already satisfied: protobuf in /usr/local/lib/python3.12/dist-packages (from vllm) (3.20.3)
+Requirement already satisfied: fastapi!=0.113.*,!=0.114.0,>=0.107.0 in /usr/local/lib/python3.12/dist-packages (from vllm) (0.115.8)
+Requirement already satisfied: aiohttp in /usr/local/lib/python3.12/dist-packages (from vllm) (3.11.12)
+Requirement already satisfied: openai>=1.52.0 in /usr/local/lib/python3.12/dist-packages (from vllm) (1.61.1)
+Requirement already satisfied: uvicorn[standard] in /usr/local/lib/python3.12/dist-packages (from vllm) (0.34.0)
+Requirement already satisfied: pydantic>=2.9 in /usr/local/lib/python3.12/dist-packages (from vllm) (2.10.6)
+Requirement already satisfied: prometheus_client>=0.18.0 in /usr/local/lib/python3.12/dist-packages (from vllm) (0.21.1)
+Requirement already satisfied: pillow in /usr/local/lib/python3.12/dist-packages (from vllm) (10.4.0)
+Requirement already satisfied: prometheus-fastapi-instrumentator>=7.0.0 in /usr/local/lib/python3.12/dist-packages (from vllm) (7.0.2)
+Requirement already satisfied: tiktoken>=0.6.0 in /usr/local/lib/python3.12/dist-packages (from vllm) (0.7.0)
+Requirement already satisfied: lm-format-enforcer<0.11,>=0.10.9 in /usr/local/lib/python3.12/dist-packages (from vllm) (0.10.9)
+Requirement already satisfied: outlines==0.1.11 in /usr/local/lib/python3.12/dist-packages (from vllm) (0.1.11)
+Requirement already satisfied: lark==1.2.2 in /usr/local/lib/python3.12/dist-packages (from vllm) (1.2.2)
+Requirement already satisfied: xgrammar>=0.1.6 in /usr/local/lib/python3.12/dist-packages (from vllm) (0.1.11)
+Requirement already satisfied: typing_extensions>=4.10 in /usr/local/lib/python3.12/dist-packages (from vllm) (4.12.2)
+Requirement already satisfied: filelock>=3.16.1 in /usr/local/lib/python3.12/dist-packages (from vllm) (3.17.0)
+Requirement already satisfied: partial-json-parser in /usr/local/lib/python3.12/dist-packages (from vllm) (0.2.1.1.post5)
+Requirement already satisfied: pyzmq in /usr/local/lib/python3.12/dist-packages (from vllm) (26.2.1)
+Requirement already satisfied: msgspec in /usr/local/lib/python3.12/dist-packages (from vllm) (0.19.0)
+Requirement already satisfied: gguf==0.10.0 in /usr/local/lib/python3.12/dist-packages (from vllm) (0.10.0)
+Requirement already satisfied: importlib_metadata in /usr/lib/python3/dist-packages (from vllm) (4.6.4)
+Requirement already satisfied: mistral_common>=1.5.0 in /usr/local/lib/python3.12/dist-packages (from mistral_common[opencv]>=1.5.0->vllm) (1.5.2)
+Requirement already satisfied: pyyaml in /usr/local/lib/python3.12/dist-packages (from vllm) (6.0.2)
+Requirement already satisfied: six>=1.16.0 in /usr/lib/python3/dist-packages (from vllm) (1.16.0)
+Requirement already satisfied: setuptools>=74.1.1 in /usr/local/lib/python3.12/dist-packages (from vllm) (75.8.0)
+Requirement already satisfied: einops in /usr/local/lib/python3.12/dist-packages (from vllm) (0.8.0)
+Requirement already satisfied: compressed-tensors==0.9.1 in /usr/local/lib/python3.12/dist-packages (from vllm) (0.9.1)
+Requirement already satisfied: depyf==0.18.0 in /usr/local/lib/python3.12/dist-packages (from vllm) (0.18.0)
+Requirement already satisfied: cloudpickle in /usr/local/lib/python3.12/dist-packages (from vllm) (3.1.1)
+Requirement already satisfied: ray>=2.9 in /usr/local/lib/python3.12/dist-packages (from ray[default]>=2.9->vllm) (2.42.0)
+Requirement already satisfied: nvidia-ml-py>=12.560.30 in /usr/local/lib/python3.12/dist-packages (from vllm) (12.570.86)
+Requirement already satisfied: torch==2.5.1 in /usr/local/lib/python3.12/dist-packages (from vllm) (2.5.1)
+Requirement already satisfied: torchaudio==2.5.1 in /usr/local/lib/python3.12/dist-packages (from vllm) (2.5.1)
+Requirement already satisfied: torchvision==0.20.1 in /usr/local/lib/python3.12/dist-packages (from vllm) (0.20.1)
+Requirement already satisfied: xformers==0.0.28.post3 in /usr/local/lib/python3.12/dist-packages (from vllm) (0.0.28.post3)
+Requirement already satisfied: astor in /usr/local/lib/python3.12/dist-packages (from depyf==0.18.0->vllm) (0.8.1)
+Requirement already satisfied: dill in /usr/local/lib/python3.12/dist-packages (from depyf==0.18.0->vllm) (0.3.8)
+Requirement already satisfied: interegular in /usr/local/lib/python3.12/dist-packages (from outlines==0.1.11->vllm) (0.3.3)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.12/dist-packages (from outlines==0.1.11->vllm) (3.1.5)
+Requirement already satisfied: nest_asyncio in /usr/local/lib/python3.12/dist-packages (from outlines==0.1.11->vllm) (1.6.0)
+Requirement already satisfied: diskcache in /usr/local/lib/python3.12/dist-packages (from outlines==0.1.11->vllm) (5.6.3)
+Requirement already satisfied: referencing in /usr/local/lib/python3.12/dist-packages (from outlines==0.1.11->vllm) (0.36.2)
+Requirement already satisfied: jsonschema in /usr/local/lib/python3.12/dist-packages (from outlines==0.1.11->vllm) (4.23.0)
+Requirement already satisfied: pycountry in /usr/local/lib/python3.12/dist-packages (from outlines==0.1.11->vllm) (24.6.1)
+Requirement already satisfied: airportsdata in /usr/local/lib/python3.12/dist-packages (from outlines==0.1.11->vllm) (20241001)
+Requirement already satisfied: outlines_core==0.1.26 in /usr/local/lib/python3.12/dist-packages (from outlines==0.1.11->vllm) (0.1.26)
+Requirement already satisfied: networkx in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (3.4.2)
+Requirement already satisfied: fsspec in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (2024.12.0)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (12.4.127)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (12.4.127)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (12.4.127)
+Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (9.1.0.70)
+Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (12.4.5.8)
+Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (11.2.1.3)
+Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (10.3.5.147)
+Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (11.6.1.9)
+Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (12.3.1.170)
+Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (2.21.5)
+Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (12.4.127)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (12.4.127)
+Requirement already satisfied: triton==3.1.0 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (3.1.0)
+Requirement already satisfied: sympy==1.13.1 in /usr/local/lib/python3.12/dist-packages (from torch==2.5.1->vllm) (1.13.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /usr/local/lib/python3.12/dist-packages (from sympy==1.13.1->torch==2.5.1->vllm) (1.3.0)
+Requirement already satisfied: starlette<0.46.0,>=0.40.0 in /usr/local/lib/python3.12/dist-packages (from fastapi!=0.113.*,!=0.114.0,>=0.107.0->vllm) (0.45.3)
+Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packages (from lm-format-enforcer<0.11,>=0.10.9->vllm) (24.2)
+Requirement already satisfied: opencv-python-headless<5.0.0,>=4.0.0 in /usr/local/lib/python3.12/dist-packages (from mistral_common[opencv]>=1.5.0->vllm) (4.11.0.86)
+Requirement already satisfied: anyio<5,>=3.5.0 in /usr/local/lib/python3.12/dist-packages (from openai>=1.52.0->vllm) (4.8.0)
+Requirement already satisfied: distro<2,>=1.7.0 in /usr/lib/python3/dist-packages (from openai>=1.52.0->vllm) (1.7.0)
+Requirement already satisfied: httpx<1,>=0.23.0 in /usr/local/lib/python3.12/dist-packages (from openai>=1.52.0->vllm) (0.28.1)
+Requirement already satisfied: jiter<1,>=0.4.0 in /usr/local/lib/python3.12/dist-packages (from openai>=1.52.0->vllm) (0.8.2)
+Requirement already satisfied: sniffio in /usr/local/lib/python3.12/dist-packages (from openai>=1.52.0->vllm) (1.3.1)
+Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/lib/python3.12/dist-packages (from pydantic>=2.9->vllm) (0.7.0)
+Requirement already satisfied: pydantic-core==2.27.2 in /usr/local/lib/python3.12/dist-packages (from pydantic>=2.9->vllm) (2.27.2)
+Requirement already satisfied: click>=7.0 in /usr/local/lib/python3.12/dist-packages (from ray>=2.9->ray[default]>=2.9->vllm) (8.1.8)
+Requirement already satisfied: msgpack<2.0.0,>=1.0.0 in /usr/local/lib/python3.12/dist-packages (from ray>=2.9->ray[default]>=2.9->vllm) (1.1.0)
+Requirement already satisfied: aiosignal in /usr/local/lib/python3.12/dist-packages (from ray>=2.9->ray[default]>=2.9->vllm) (1.3.2)
+Requirement already satisfied: frozenlist in /usr/local/lib/python3.12/dist-packages (from ray>=2.9->ray[default]>=2.9->vllm) (1.5.0)
+Requirement already satisfied: aiohttp-cors in /usr/local/lib/python3.12/dist-packages (from ray[default]>=2.9->vllm) (0.7.0)
+Requirement already satisfied: colorful in /usr/local/lib/python3.12/dist-packages (from ray[default]>=2.9->vllm) (0.5.6)
+Requirement already satisfied: opencensus in /usr/local/lib/python3.12/dist-packages (from ray[default]>=2.9->vllm) (0.11.4)
+Requirement already satisfied: smart-open in /usr/local/lib/python3.12/dist-packages (from ray[default]>=2.9->vllm) (7.1.0)
+Requirement already satisfied: virtualenv!=20.21.1,>=20.0.24 in /usr/local/lib/python3.12/dist-packages (from ray[default]>=2.9->vllm) (20.29.1)
+Requirement already satisfied: grpcio>=1.42.0 in /usr/local/lib/python3.12/dist-packages (from ray[default]>=2.9->vllm) (1.70.0)
+Requirement already satisfied: py-spy>=0.4.0 in /usr/local/lib/python3.12/dist-packages (from ray[default]>=2.9->vllm) (0.4.0)
+Requirement already satisfied: aiohappyeyeballs>=2.3.0 in /usr/local/lib/python3.12/dist-packages (from aiohttp->vllm) (2.4.4)
+Requirement already satisfied: attrs>=17.3.0 in /usr/local/lib/python3.12/dist-packages (from aiohttp->vllm) (25.1.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in /usr/local/lib/python3.12/dist-packages (from aiohttp->vllm) (6.1.0)
+Requirement already satisfied: propcache>=0.2.0 in /usr/local/lib/python3.12/dist-packages (from aiohttp->vllm) (0.2.1)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in /usr/local/lib/python3.12/dist-packages (from aiohttp->vllm) (1.18.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in /usr/local/lib/python3.12/dist-packages (from requests>=2.26.0->vllm) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.12/dist-packages (from requests>=2.26.0->vllm) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /usr/local/lib/python3.12/dist-packages (from requests>=2.26.0->vllm) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.12/dist-packages (from requests>=2.26.0->vllm) (2025.1.31)
+Requirement already satisfied: regex>=2022.1.18 in /usr/local/lib/python3.12/dist-packages (from tiktoken>=0.6.0->vllm) (2024.11.6)
+Requirement already satisfied: huggingface-hub<1.0,>=0.16.4 in /usr/local/lib/python3.12/dist-packages (from tokenizers>=0.19.1->vllm) (0.28.1)
+Requirement already satisfied: safetensors>=0.4.1 in /usr/local/lib/python3.12/dist-packages (from transformers>=4.48.2->vllm) (0.5.2)
+Requirement already satisfied: pybind11 in /usr/local/lib/python3.12/dist-packages (from xgrammar>=0.1.6->vllm) (2.13.6)
+Requirement already satisfied: pytest in /usr/local/lib/python3.12/dist-packages (from xgrammar>=0.1.6->vllm) (8.3.4)
+Requirement already satisfied: h11>=0.8 in /usr/local/lib/python3.12/dist-packages (from uvicorn[standard]->vllm) (0.14.0)
+Requirement already satisfied: httptools>=0.6.3 in /usr/local/lib/python3.12/dist-packages (from uvicorn[standard]->vllm) (0.6.4)
+Requirement already satisfied: python-dotenv>=0.13 in /usr/local/lib/python3.12/dist-packages (from uvicorn[standard]->vllm) (1.0.1)
+Requirement already satisfied: uvloop!=0.15.0,!=0.15.1,>=0.14.0 in /usr/local/lib/python3.12/dist-packages (from uvicorn[standard]->vllm) (0.21.0)
+Requirement already satisfied: watchfiles>=0.13 in /usr/local/lib/python3.12/dist-packages (from uvicorn[standard]->vllm) (1.0.4)
+Requirement already satisfied: websockets>=10.4 in /usr/local/lib/python3.12/dist-packages (from uvicorn[standard]->vllm) (14.2)
+Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.12/dist-packages (from httpx<1,>=0.23.0->openai>=1.52.0->vllm) (1.0.7)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /usr/local/lib/python3.12/dist-packages (from jsonschema->outlines==0.1.11->vllm) (2024.10.1)
+Requirement already satisfied: rpds-py>=0.7.1 in /usr/local/lib/python3.12/dist-packages (from jsonschema->outlines==0.1.11->vllm) (0.22.3)
+Requirement already satisfied: distlib<1,>=0.3.7 in /usr/local/lib/python3.12/dist-packages (from virtualenv!=20.21.1,>=20.0.24->ray[default]>=2.9->vllm) (0.3.9)
+Requirement already satisfied: platformdirs<5,>=3.9.1 in /usr/local/lib/python3.12/dist-packages (from virtualenv!=20.21.1,>=20.0.24->ray[default]>=2.9->vllm) (4.3.6)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.12/dist-packages (from jinja2->outlines==0.1.11->vllm) (3.0.2)
+Requirement already satisfied: opencensus-context>=0.1.3 in /usr/local/lib/python3.12/dist-packages (from opencensus->ray[default]>=2.9->vllm) (0.1.3)
+Requirement already satisfied: google-api-core<3.0.0,>=1.0.0 in /usr/local/lib/python3.12/dist-packages (from opencensus->ray[default]>=2.9->vllm) (2.24.1)
+Requirement already satisfied: iniconfig in /usr/local/lib/python3.12/dist-packages (from pytest->xgrammar>=0.1.6->vllm) (2.0.0)
+Requirement already satisfied: pluggy<2,>=1.5 in /usr/local/lib/python3.12/dist-packages (from pytest->xgrammar>=0.1.6->vllm) (1.5.0)
+Requirement already satisfied: wrapt in /usr/local/lib/python3.12/dist-packages (from smart-open->ray[default]>=2.9->vllm) (1.17.2)
+Requirement already satisfied: googleapis-common-protos<2.0.dev0,>=1.56.2 in /usr/local/lib/python3.12/dist-packages (from google-api-core<3.0.0,>=1.0.0->opencensus->ray[default]>=2.9->vllm) (1.67.0rc1)
+Requirement already satisfied: proto-plus<2.0.0dev,>=1.22.3 in /usr/local/lib/python3.12/dist-packages (from google-api-core<3.0.0,>=1.0.0->opencensus->ray[default]>=2.9->vllm) (1.26.0)
+Requirement already satisfied: google-auth<3.0.dev0,>=2.14.1 in /usr/local/lib/python3.12/dist-packages (from google-api-core<3.0.0,>=1.0.0->opencensus->ray[default]>=2.9->vllm) (2.38.0)
+Requirement already satisfied: cachetools<6.0,>=2.0.0 in /usr/local/lib/python3.12/dist-packages (from google-auth<3.0.dev0,>=2.14.1->google-api-core<3.0.0,>=1.0.0->opencensus->ray[default]>=2.9->vllm) (5.5.1)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /usr/local/lib/python3.12/dist-packages (from google-auth<3.0.dev0,>=2.14.1->google-api-core<3.0.0,>=1.0.0->opencensus->ray[default]>=2.9->vllm) (0.4.1)
+Requirement already satisfied: rsa<5,>=3.1.4 in /usr/local/lib/python3.12/dist-packages (from google-auth<3.0.dev0,>=2.14.1->google-api-core<3.0.0,>=1.0.0->opencensus->ray[default]>=2.9->vllm) (4.9)
+Requirement already satisfied: pyasn1<0.7.0,>=0.4.6 in /usr/local/lib/python3.12/dist-packages (from pyasn1-modules>=0.2.1->google-auth<3.0.dev0,>=2.14.1->google-api-core<3.0.0,>=1.0.0->opencensus->ray[default]>=2.9->vllm) (0.6.1)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[notice] A new release of pip is available: 25.0 -> 25.0.1
+[notice] To update, run: python3.12 -m pip install --upgrade pip
+Unsloth: Patching Xformers to fix some performance issues.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+INFO 02-18 18:08:50 __init__.py:190] Automatically detected platform cuda.
+2025-02-18 18:08:51,635 - INFO - Running in SMOKETEST mode
+2025-02-18 18:08:51,635 - INFO - Parameters: {
+  "learning_rate": 5e-06,
+  "lora_rank": 64,
+  "max_seq_length": 1024,
+  "num_train_epochs": 1,
+  "max_steps": 5,
+  "gradient_accumulation_steps": 1,
+  "num_generations": 2,
+  "gpu_memory_utilization": 0.5,
+  "smoketest": true
+}
+2025-02-18 18:08:51,635 - INFO - Initializing model and tokenizer...
+==((====))==  Unsloth 2025.2.12: Fast Qwen2 patching. Transformers: 4.48.2.
+   \\   /|    GPU: NVIDIA RTX 6000 Ada Generation. Max memory: 47.5 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.5.1+cu124. CUDA: 8.9. CUDA Toolkit: 12.4. Triton: 3.1.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.28.post3. FA2 = False]
+ "-____-"     Free Apache license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+Unsloth: vLLM loading unsloth/qwen2.5-3b-instruct-unsloth-bnb-4bit with actual GPU utilization = 49.08%
+Unsloth: Your GPU has CUDA compute capability 8.9 with VRAM = 47.5 GB.
+Unsloth: Using conservativeness = 1.0. Chunked prefill tokens = 1024. Num Sequences = 288.
+Unsloth: vLLM's KV Cache can use up to 20.9 GB. Also swap space = 6 GB.
+INFO 02-18 18:08:57 config.py:542] This model supports multiple tasks: {'score', 'classify', 'embed', 'generate', 'reward'}. Defaulting to 'generate'.
+Unsloth: vLLM Bitsandbytes config using kwargs = {'load_in_8bit': False, 'load_in_4bit': True, 'bnb_4bit_compute_dtype': 'bfloat16', 'bnb_4bit_quant_storage': 'uint8', 'bnb_4bit_quant_type': 'nf4', 'bnb_4bit_use_double_quant': True, 'llm_int8_enable_fp32_cpu_offload': False, 'llm_int8_has_fp16_weight': False, 'llm_int8_skip_modules': ['lm_head', 'multi_modal_projector', 'merger', 'modality_projection', 'model.layers.2.mlp', 'model.layers.3.mlp', 'model.layers.30.mlp'], 'llm_int8_threshold': 6.0}
+INFO 02-18 18:09:00 cuda.py:230] Using Flash Attention backend.
+[W218 18:09:00.275476719 CUDAAllocatorConfig.h:28] Warning: expandable_segments not supported on this platform (function operator())
+INFO 02-18 18:09:00 model_runner.py:1110] Starting to load model unsloth/qwen2.5-3b-instruct-unsloth-bnb-4bit...
+INFO 02-18 18:09:00 loader.py:1102] Loading weights with BitsAndBytes quantization.  May take a while ...
+INFO 02-18 18:09:00 weight_utils.py:252] Using model weights format ['*.safetensors']
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  2.83it/s]
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  2.67it/s]
+INFO 02-18 18:12:48 model_runner.py:1115] Loading model weights took 2.2160 GB
+INFO 02-18 18:12:48 punica_selector.py:18] Using PunicaWrapperGPU.
+INFO 02-18 18:12:51 worker.py:267] Memory profiling takes 2.93 seconds
+INFO 02-18 18:12:51 worker.py:267] the current vLLM instance can use total_gpu_memory (47.50GiB) x gpu_memory_utilization (0.49) = 23.31GiB
+INFO 02-18 18:12:51 worker.py:267] model weights take 2.22GiB; non_torch_memory takes 0.08GiB; PyTorch activation peak memory takes 1.57GiB; the rest of the memory reserved for KV Cache is 19.45GiB.
+INFO 02-18 18:12:51 executor_base.py:110] # CUDA blocks: 35405, # CPU blocks: 10922
+INFO 02-18 18:12:51 executor_base.py:115] Maximum concurrency for 1024 tokens per request: 553.20x
+INFO 02-18 18:12:56 model_runner.py:1434] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+Capturing CUDA graph shapes:   0%|          | 0/39 [00:00<?, ?it/s]
+Capturing CUDA graph shapes:   3%|▎         | 1/39 [00:01<00:39,  1.04s/it]
+Capturing CUDA graph shapes:   5%|▌         | 2/39 [00:01<00:27,  1.33it/s]
+Capturing CUDA graph shapes:   8%|▊         | 3/39 [00:02<00:23,  1.52it/s]
+Capturing CUDA graph shapes:  10%|█         | 4/39 [00:02<00:21,  1.62it/s]
+Capturing CUDA graph shapes:  13%|█▎        | 5/39 [00:03<00:20,  1.69it/s]
+Capturing CUDA graph shapes:  15%|█▌        | 6/39 [00:03<00:19,  1.73it/s]
+Capturing CUDA graph shapes:  18%|█▊        | 7/39 [00:04<00:18,  1.76it/s]
+Capturing CUDA graph shapes:  21%|██        | 8/39 [00:04<00:17,  1.78it/s]
+Capturing CUDA graph shapes:  23%|██▎       | 9/39 [00:05<00:16,  1.79it/s]
+Capturing CUDA graph shapes:  26%|██▌       | 10/39 [00:06<00:16,  1.74it/s]
+Capturing CUDA graph shapes:  28%|██▊       | 11/39 [00:06<00:16,  1.72it/s]
+Capturing CUDA graph shapes:  31%|███       | 12/39 [00:07<00:15,  1.72it/s]
+Capturing CUDA graph shapes:  33%|███▎      | 13/39 [00:07<00:15,  1.72it/s]
+Capturing CUDA graph shapes:  36%|███▌      | 14/39 [00:08<00:14,  1.73it/s]
+Capturing CUDA graph shapes:  38%|███▊      | 15/39 [00:08<00:13,  1.74it/s]
+Capturing CUDA graph shapes:  41%|████      | 16/39 [00:09<00:13,  1.75it/s]
+Capturing CUDA graph shapes:  44%|████▎     | 17/39 [00:10<00:12,  1.77it/s]
+Capturing CUDA graph shapes:  46%|████▌     | 18/39 [00:10<00:11,  1.77it/s]
+Capturing CUDA graph shapes:  49%|████▊     | 19/39 [00:11<00:11,  1.78it/s]
+Capturing CUDA graph shapes:  51%|█████▏    | 20/39 [00:11<00:10,  1.79it/s]
+Capturing CUDA graph shapes:  54%|█████▍    | 21/39 [00:12<00:10,  1.78it/s]
+Capturing CUDA graph shapes:  56%|█████▋    | 22/39 [00:12<00:09,  1.79it/s]
+Capturing CUDA graph shapes:  59%|█████▉    | 23/39 [00:13<00:08,  1.79it/s]
+Capturing CUDA graph shapes:  62%|██████▏   | 24/39 [00:13<00:08,  1.79it/s]
+Capturing CUDA graph shapes:  64%|██████▍   | 25/39 [00:14<00:07,  1.79it/s]
+Capturing CUDA graph shapes:  67%|██████▋   | 26/39 [00:15<00:07,  1.79it/s]
+Capturing CUDA graph shapes:  69%|██████▉   | 27/39 [00:15<00:06,  1.80it/s]
+Capturing CUDA graph shapes:  72%|███████▏  | 28/39 [00:16<00:06,  1.80it/s]
+Capturing CUDA graph shapes:  74%|███████▍  | 29/39 [00:16<00:05,  1.80it/s]
+Capturing CUDA graph shapes:  77%|███████▋  | 30/39 [00:17<00:04,  1.80it/s]
+Capturing CUDA graph shapes:  79%|███████▉  | 31/39 [00:17<00:04,  1.81it/s]
+Capturing CUDA graph shapes:  82%|████████▏ | 32/39 [00:18<00:03,  1.81it/s]
+Capturing CUDA graph shapes:  85%|████████▍ | 33/39 [00:18<00:03,  1.81it/s]
+Capturing CUDA graph shapes:  87%|████████▋ | 34/39 [00:19<00:02,  1.81it/s]
+Capturing CUDA graph shapes:  90%|████████▉ | 35/39 [00:20<00:02,  1.81it/s]
+Capturing CUDA graph shapes:  92%|█████████▏| 36/39 [00:20<00:01,  1.82it/s]
+Capturing CUDA graph shapes:  95%|█████████▍| 37/39 [00:21<00:01,  1.81it/s]
+Capturing CUDA graph shapes:  97%|█████████▋| 38/39 [00:21<00:00,  1.82it/s]
+Capturing CUDA graph shapes: 100%|██████████| 39/39 [00:22<00:00,  1.84it/s]
+Capturing CUDA graph shapes: 100%|██████████| 39/39 [00:22<00:00,  1.75it/s]
+INFO 02-18 18:13:18 model_runner.py:1562] Graph capturing finished in 22 secs, took 0.93 GiB
+INFO 02-18 18:13:18 llm_engine.py:431] init engine (profile, create kv cache, warmup model) took 30.31 seconds
+Unsloth 2025.2.12 patched 36 layers with 36 QKV layers, 36 O layers and 36 MLP layers.
+2025-02-18 18:13:26,124 - INFO - Loading dataset...
+Generating train split:   0%|          | 0/7473 [00:00<?, ? examples/s]
+Generating train split: 100%|██████████| 7473/7473 [00:00<00:00, 520250.20 examples/s]
+Generating test split:   0%|          | 0/1319 [00:00<?, ? examples/s]
+Generating test split: 100%|██████████| 1319/1319 [00:00<00:00, 507782.19 examples/s]
+Map:   0%|          | 0/7473 [00:00<?, ? examples/s]
+Map:  52%|█████▏    | 3907/7473 [00:00<00:00, 38816.46 examples/s]
+Map: 100%|██████████| 7473/7473 [00:00<00:00, 40775.27 examples/s]
+2025-02-18 18:13:27,200 - INFO - Reduced dataset size for smoketest: 10
+Unsloth: We know expect `per_device_train_batch_size` to be a multiple of `num_generations`.
+We will change the batch size of 1 to the `num_generations` of 2
+2025-02-18 18:13:27,244 - INFO - Starting training...
+==((====))==  Unsloth - 2x faster free finetuning | Num GPUs = 1
+   \\   /|    Num examples = 10 | Num Epochs = 1
+O^O/ \_/ \    Batch size per device = 2 | Gradient Accumulation steps = 1
+\        /    Total batch size = 2 | Total steps = 5
+ "-____-"     Number of trainable parameters = 119,734,272
+  0%|          | 0/5 [00:00<?, ?it/s]
+ 20%|██        | 1/5 [00:10<00:40, 10.05s/it]
+ 40%|████      | 2/5 [00:13<00:19,  6.39s/it]
+ 60%|██████    | 3/5 [00:17<00:10,  5.25s/it]
+ 80%|████████  | 4/5 [00:20<00:04,  4.28s/it]
+100%|██████████| 5/5 [00:23<00:00,  3.70s/it]
+-------------------- Question:
+Tina makes $18.00 an hour.  If she works more than 8 hours per shift, she is eligible for overtime, which is paid by your hourly wage + 1/2 your hourly wage.  If she works 10 hours every day for 5 days, how much money does she make? 
+Answer:
+990 
+Response:
+<reasoning>
+To determine how much money Tina makes, we need to calculate her earnings day by day and then sum it up for 5 days.
+First, let's calculate her regular pay for 8 hours. Her regular pay per hour is $18.0(0, so for 8 hours, she earns:
+\[ 8 \times 18 = 144 \]
+For any hours beyond 8 (i.e., 10 - 8 = 2 hours of overtime), her hourly wage is $18.00 + $18.00/2 = $27.00. So, for 2 hours of overtime, she earns:
+\[ 2 \times 27 = 54 \]
+Thus, her total pay for one day (10 hours) is the sum of her regular pay and overtime pay:
+\[ 144 + 54 = 198 \]
+Since she 
+Extracted:
+<reasoning>
+To determine how much money Tina makes, we need to calculate her earnings day by day and then sum it up for 5 days.
+First, let's calculate her regular pay for 8 hours. Her regular pay per hour is $18.0(0, so for 8 hours, she earns:
+\[ 8 \times 18 = 144 \]
+For any hours beyond 8 (i.e., 10 - 8 = 2 hours of overtime), her hourly wage is $18.00 + $18.00/2 = $27.00. So, for 2 hours of overtime, she earns:
+\[ 2 \times 27 = 54 \]
+Thus, her total pay for one day (10 hours) is the sum of her regular pay and overtime pay:
+\[ 144 + 54 = 198 \]
+Since she
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 5e-06, 'rewards/xmlcount_reward_func': 0.125, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.0, 'rewards/correctness_reward_func': 0.0, 'reward': 0.125, 'reward_std': 0.0, 'completion_length': 200.0, 'kl': 0.0, 'epoch': 0.1}
+-------------------- Question:
+Weng earns $12 an hour for babysitting. Yesterday, she just did 50 minutes of babysitting. How much did she earn? 
+Answer:
+10 
+Response:
+<reasoning>
+To determine how much Weng earned, we need to calculate the fraction of an hour for which she worked and then multiply by her hourly rate. Weng worked 50 minutes, which is \(\frac{50}{60}\) of an hour. Since she earns $12 per hour, we first convert 50 minutes to hours, which is \(\frac{50}{60} = \frac{5}{6}\) of an hour. Then we multiply \(\frac{5}{6}\) by $12 to find her earnings.
+</reasoning>
+<answer>
+Weng worked \(\frac{5}{6}\) of an hour. To calculate her earnings, we perform the following calculation:
+\[
+\frac{5}{6} \times 12 = 10
+\]
+So, Weng earned $10.
+</answer> 
+Extracted:
+Weng worked \(\frac{5}{6}\) of an hour. To calculate her earnings, we perform the following calculation:
+\[
+\frac{5}{6} \times 12 = 10
+\]
+So, Weng earned $10.
+{'loss': -0.0, 'grad_norm': 0.5990983843803406, 'learning_rate': 4.267766952966369e-06, 'rewards/xmlcount_reward_func': -0.17749999463558197, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.0, 'rewards/correctness_reward_func': 0.0, 'reward': -0.17749999463558197, 'reward_std': 0.1265721172094345, 'completion_length': 195.5, 'kl': 0.0, 'epoch': 0.2}
+-------------------- Question:
+Mark has a garden with flowers. He planted plants of three different colors in it. Ten of them are yellow, and there are 80% more of those in purple. There are only 25% as many green flowers as there are yellow and purple flowers. How many flowers does Mark have in his garden? 
+Answer:
+35 
+Response:
+<reasoning>
+To find the total number of flowers in Mark's garden, we can follow these steps:
+1. **Determine the number of purple flowers:**
+   Mark has 10 yellow flowers. Purple flowers make up 80% more than the yellow ones. We can calculate the number of purple flowers as follows:
+   \[
+   \text{Purple flowers} = 10 + (0.80 \times 10) = 10 + 8 = 18
+   \]
+2. **Determine the number of green flowers:**
+   Green flowers are only 25% as many as the number of yellow and purple flowers combined:
+   \[
+   \text{Yellow and purple flowers combined} = 10 + 18 = 28
+   \]
+   \[
+   \text{Green flowers} = 0.25 \times 28 = 7
+   \]
+3 
+Extracted:
+<reasoning>
+To find the total number of flowers in Mark's garden, we can follow these steps:
+1. **Determine the number of purple flowers:**
+   Mark has 10 yellow flowers. Purple flowers make up 80% more than the yellow ones. We can calculate the number of purple flowers as follows:
+   \[
+   \text{Purple flowers} = 10 + (0.80 \times 10) = 10 + 8 = 18
+   \]
+2. **Determine the number of green flowers:**
+   Green flowers are only 25% as many as the number of yellow and purple flowers combined:
+   \[
+   \text{Yellow and purple flowers combined} = 10 + 18 = 28
+   \]
+   \[
+   \text{Green flowers} = 0.25 \times 28 = 7
+   \]
+3
+{'loss': 0.0, 'grad_norm': 0.0012809011386707425, 'learning_rate': 2.5e-06, 'rewards/xmlcount_reward_func': 0.125, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.0, 'rewards/correctness_reward_func': 0.0, 'reward': 0.125, 'reward_std': 0.0, 'completion_length': 200.0, 'kl': 0.00022520973288919777, 'epoch': 0.3}
+-------------------- Question:
+Ken created a care package to send to his brother, who was away at boarding school.  Ken placed a box on a scale, and then he poured into the box enough jelly beans to bring the weight to 2 pounds.  Then, he added enough brownies to cause the weight to triple.  Next, he added another 2 pounds of jelly beans.  And finally, he added enough gummy worms to double the weight once again.  What was the final weight of the box of goodies, in pounds? 
+Answer:
+16 
+Response:
+<reasoning>
+We need to determine the final weight of the box of goodies. To find this, let's follow the operations described:
+1. Ken first poured into the box enough jelly beans to bring the weight to 2 pounds.
+2. He then added enough brownies to triple the weight.
+3. Next, he added another 2 pounds of jelly beans.
+4. Finally, he added enough gummy worms to double the weight.
+Let's denote the initial 2 pounds of jelly beans as 2 lbs. When the jelly beans are tripled, the weight becomes \( 2 \times 3 = 6 \) lbs. Adding 2 more pounds of jelly beans makes the weight \( 6 + 2 = 8 \) lbs. And finally, doubling this weight makes the final weight \( 8 \times 2 = 16 \) lbs.
+</reasoning>
+<answer>
+The final weight of the box of goodies is 16 pounds 
+Extracted:
+The final weight of the box of goodies is 16 pounds
+{'loss': 0.0, 'grad_norm': 0.5956629514694214, 'learning_rate': 7.322330470336314e-07, 'rewards/xmlcount_reward_func': -0.1459999978542328, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.0, 'rewards/correctness_reward_func': 0.0, 'reward': -0.1459999978542328, 'reward_std': 0.32526910305023193, 'completion_length': 160.0, 'kl': 0.0006133244023658335, 'epoch': 0.4}
+-------------------- Question:
+Julie is reading a 120-page book. Yesterday, she was able to read 12 pages and today, she read twice as many pages as yesterday. If she wants to read half of the remaining pages tomorrow, how many pages should she read? 
+Answer:
+42 
+Response:
+<reasoning>
+Julie has 120 pages to read in total. She read 12 pages yesterday. Today, she read twice as many pages as she did yesterday, which means she read \(12 \times 2 = 24\) pages today. Thus, the total pages she has read so far is \(12 + 24 = 36\) pages. Therefore, the remaining pages to be read are \(120 - 36 = 84\) pages. Julie wants to read half of the remaining pages tomorrow, which means she will read \(84 \div 2 = 42\) pages tomorrow.
+</reasoning>
+<answer>
+Julie should read 42 pages.
+</answer> 
+Extracted:
+Julie should read 42 pages.
+{'loss': 0.0, 'grad_norm': 0.4660000503063202, 'learning_rate': 0.0, 'rewards/xmlcount_reward_func': 0.035999998450279236, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.0, 'rewards/correctness_reward_func': 0.0, 'reward': 0.035999998450279236, 'reward_std': 0.06363961100578308, 'completion_length': 149.0, 'kl': 0.0004036227473989129, 'epoch': 0.5}
+{'train_runtime': 24.1423, 'train_samples_per_second': 0.414, 'train_steps_per_second': 0.207, 'train_loss': 9.913869871525093e-06, 'epoch': 0.5}
+100%|██████████| 5/5 [00:24<00:00,  3.70s/it]
+100%|██████████| 5/5 [00:24<00:00,  4.83s/it]
+2025-02-18 18:13:52,514 - INFO - Saving model...
+2025-02-18 18:13:52,733 - INFO - Training completed!
+[rank0]:[W218 18:13:53.388452069 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
