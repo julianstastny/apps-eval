@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
     
     # Execution settings
-    max_memory_mb: int = 512
+    max_memory_mb: int = 2048
     default_timeout: float = 4.0
     
     # Logging settings
