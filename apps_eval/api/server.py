@@ -54,13 +54,24 @@ class ResourceAwareRateLimiter:
     def calculate_max_concurrent_requests(self) -> int:
         """Calculate the maximum number of concurrent requests based on system resources."""
         available_mem_mb = self.get_available_memory_mb()
+        total_mem_mb = psutil.virtual_memory().total / (1024 * 1024)
         cpu_count = psutil.cpu_count()
         
+        # More conservative memory limits:
+        # - Leave 20% of total memory for system
+        # - Each request might use up to max_memory_mb
+        # - Add buffer for uvicorn and other overhead
+        system_reserve_mb = total_mem_mb * 0.2
+        uvicorn_buffer_mb = 512  # Reserve 512MB for uvicorn
+        available_for_requests = max(0, available_mem_mb - system_reserve_mb - uvicorn_buffer_mb)
+        
         # Consider both memory and CPU constraints
-        mem_limit = int(available_mem_mb * 0.8 / self.settings.max_memory_mb)
+        mem_limit = int(available_for_requests / (self.settings.max_memory_mb * 1.2))  # Add 20% overhead per request
         cpu_limit = cpu_count * 2  # Rule of thumb: 2 I/O-bound tasks per CPU
         
-        return max(1, min(mem_limit, cpu_limit))
+        # Ensure at least one request can run if we have enough memory
+        min_requests = 1 if available_mem_mb > (self.settings.max_memory_mb + system_reserve_mb + uvicorn_buffer_mb) else 0
+        return max(min_requests, min(mem_limit, cpu_limit))
 
     async def check_and_update_limit(self):
         """Async wrapper for update_limit that can be called directly."""
@@ -109,6 +120,14 @@ async def evaluate_code(
         HTTPException: If there's an error during evaluation
     """
     try:
+        # Check if we have enough memory before accepting the request
+        available_mem_mb = rate_limiter.get_available_memory_mb()
+        if available_mem_mb < settings.max_memory_mb * 1.5:  # Need 50% more than max_memory for safety
+            raise HTTPException(
+                status_code=503,
+                detail="Server is low on memory. Please try again later."
+            )
+        
         async with rate_limiter.semaphore:
             # Update limits after this request completes
             background_tasks.add_task(rate_limiter.check_and_update_limit)
@@ -132,10 +151,13 @@ async def evaluate_code(
 @app.get("/health")
 async def health_check() -> dict:
     """Health check endpoint with resource metrics."""
+    vm = psutil.virtual_memory()
     return {
         "status": "healthy",
         "resources": {
+            "total_memory_mb": vm.total / (1024 * 1024),
             "available_memory_mb": rate_limiter.get_available_memory_mb(),
+            "memory_percent": vm.percent,
             "max_concurrent_requests": rate_limiter.semaphore._value,
             "current_requests": rate_limiter.semaphore._value - rate_limiter.semaphore._wake_count,
             "cpu_percent": psutil.cpu_percent(),
@@ -151,9 +173,16 @@ async def health_check() -> dict:
 if __name__ == "__main__":
     import uvicorn
     
+    # Configure uvicorn with more conservative memory settings
     uvicorn.run(
         "apps_eval.api.server:app",
         host=settings.host,
         port=settings.port,
         reload=True,
+        limit_concurrency=rate_limiter.semaphore._value,  # Match our rate limiter
+        limit_max_requests=rate_limiter.semaphore._value,  # Match our rate limiter
+        http={
+            "h11_max_incomplete_size": 16384,  # 16KB max incomplete request size
+            "max_incomplete_headers": 16384,    # 16KB max incomplete headers
+        }
     ) 
