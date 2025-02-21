@@ -34,6 +34,9 @@ def disable_dangerous_functions() -> None:
     """Disable potentially dangerous built-in functions and modules."""
     import builtins
     
+    # Save original open function
+    original_open = builtins.open
+    
     # Disable dangerous builtins
     DANGEROUS_BUILTINS = {
         'exit', 'quit', 'help',  # Interactive functions
@@ -78,6 +81,14 @@ def disable_dangerous_functions() -> None:
     }
     for module in DANGEROUS_MODULES:
         sys.modules[module] = None
+    
+    return original_open
+
+
+def restore_open_function(original_open):
+    """Restore the original open function."""
+    import builtins
+    builtins.open = original_open
 
 
 @contextmanager
@@ -96,8 +107,8 @@ def secure_execution_environment(max_memory_bytes: Optional[int] = None):
         if max_memory_bytes is not None:
             set_memory_limit(max_memory_bytes)
         
-        # Disable dangerous functionality
-        disable_dangerous_functions()
+        # Disable dangerous functionality and save original open
+        original_open = disable_dangerous_functions()
         
         yield
         
@@ -106,10 +117,11 @@ def secure_execution_environment(max_memory_bytes: Optional[int] = None):
         raise SecurityError(f"Security violation: {str(e)}")
         
     finally:
-        # Restore original environment
+        # Restore original environment and open function
         try:
             os.environ.clear()
             os.environ.update(original_env)
+            restore_open_function(original_open)
         except Exception as e:
             logging.error(f"Error restoring environment: {e}")
             # Create a new environment dict if the original is corrupted

@@ -226,7 +226,8 @@ class CodeRunner:
             compile(code, '<string>', 'exec')
             
             # Then execute to define the function
-            exec(code, module.__dict__)
+            with secure_execution_environment(max_memory_bytes=self.max_memory_bytes):
+                exec(code, module.__dict__)
             
             # Verify the function was defined
             if submission.code_type == CodeType.STANDARD_INPUT:
