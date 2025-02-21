@@ -62,6 +62,10 @@ class ResourceAwareRateLimiter:
         
         return max(1, min(mem_limit, cpu_limit))
 
+    async def check_and_update_limit(self):
+        """Async wrapper for update_limit that can be called directly."""
+        self.update_limit()
+
 
 app = FastAPI(
     title="APPS Evaluation API",
@@ -106,8 +110,8 @@ async def evaluate_code(
     """
     try:
         async with rate_limiter.semaphore:
-            # Update limits periodically in background
-            background_tasks.add_task(rate_limiter.update_limit)
+            # Update limits after this request completes
+            background_tasks.add_task(rate_limiter.check_and_update_limit)
             
             logger.info(f"Received submission of type {submission.code_type}")
             result = runner.evaluate(submission)

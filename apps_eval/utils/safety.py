@@ -69,7 +69,6 @@ def disable_dangerous_functions() -> None:
         'imaplib',    # IMAP access
         'telnetlib',  # Telnet access
         'smtplib',    # SMTP access
-        'asyncio',    # Async IO
         'multiprocessing',  # Process management
         'threading',  # Thread management
         'ctypes',    # C interface
