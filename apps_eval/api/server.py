@@ -8,8 +8,14 @@ from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
 
-from apps_eval.core.models import CodeSubmission, EvaluationResult
+from apps_eval.core.models import (
+    BatchSubmission,
+    BatchResult,
+    CodeSubmission,
+    EvaluationResult,
+)
 from apps_eval.core.runner import CodeRunner
+from apps_eval.core.queue import JobQueue
 from apps_eval.core.config import settings
 
 # Configure logging
@@ -100,6 +106,9 @@ runner = CodeRunner(
     default_timeout=settings.default_timeout,
 )
 
+# Initialize job queue
+job_queue = JobQueue(runner)
+
 
 @app.post("/evaluate")
 async def evaluate_code(
@@ -148,6 +157,54 @@ async def evaluate_code(
         )
 
 
+@app.post("/evaluate/batch")
+async def submit_batch(batch: BatchSubmission) -> BatchResult:
+    """
+    Submit a batch of code submissions for evaluation.
+    
+    Args:
+        batch: The batch of submissions to evaluate
+        
+    Returns:
+        BatchResult containing the job ID and initial status
+        
+    Raises:
+        HTTPException: If there's an error submitting the batch
+    """
+    try:
+        job_id = job_queue.submit_batch(batch)
+        return job_queue.get_result(job_id)
+    except Exception as e:
+        logger.exception("Error submitting batch")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error submitting batch: {str(e)}",
+        )
+
+
+@app.get("/evaluate/batch/{job_id}")
+async def get_batch_result(job_id: str) -> BatchResult:
+    """
+    Get the results for a batch job.
+    
+    Args:
+        job_id: The job ID to get results for
+        
+    Returns:
+        BatchResult containing the current status and any available results
+        
+    Raises:
+        HTTPException: If the job is not found
+    """
+    result = job_queue.get_result(job_id)
+    if result is None:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Job {job_id} not found"
+        )
+    return result
+
+
 @app.get("/health")
 async def health_check() -> dict:
     """Health check endpoint with resource metrics."""
@@ -161,6 +218,8 @@ async def health_check() -> dict:
             "max_concurrent_requests": rate_limiter.semaphore._value,
             "current_requests": rate_limiter.semaphore._value - rate_limiter.semaphore._wake_count,
             "cpu_percent": psutil.cpu_percent(),
+            "active_jobs": len([j for j in job_queue.jobs.values() if j.status == "in_progress"]),
+            "total_jobs": len(job_queue.jobs),
         },
         "config": {
             "max_memory_mb": settings.max_memory_mb,

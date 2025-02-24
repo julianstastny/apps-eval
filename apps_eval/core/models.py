@@ -4,12 +4,22 @@ Core data models for code evaluation.
 from enum import Enum
 from typing import Any, Dict, List, Optional, Union
 from pydantic import BaseModel, Field, ConfigDict, model_validator
+import hashlib
+import json
 
 
 class CodeType(str, Enum):
     """Type of code being evaluated."""
     CALL_BASED = "call_based"  # Function calls with specific inputs
     STANDARD_INPUT = "standard_input"  # Code that reads from stdin
+
+
+class JobStatus(str, Enum):
+    """Status of a batch job."""
+    PENDING = "pending"
+    IN_PROGRESS = "in_progress"
+    DONE = "done"
+    FAILED = "failed"
 
 
 class ExecutionResult(str, Enum):
@@ -57,6 +67,40 @@ class CodeSubmission(BaseModel):
         if values.get('code_type') is None:
             values['code_type'] = CodeType.CALL_BASED if values.get('function_name') is not None else CodeType.STANDARD_INPUT
         return values
+    
+    def get_hash(self) -> str:
+        """Generate a deterministic hash for this submission."""
+        # Create a dictionary of all fields that affect execution
+        hash_dict = {
+            "code": self.code,
+            "code_type": self.code_type,
+            "function_name": self.function_name,
+            "test_cases": [
+                {
+                    "inputs": tc.inputs,
+                    "expected_outputs": tc.expected_outputs,
+                    "timeout_seconds": tc.timeout_seconds
+                }
+                for tc in self.test_cases
+            ]
+        }
+        # Convert to stable JSON string and hash
+        json_str = json.dumps(hash_dict, sort_keys=True)
+        return hashlib.sha256(json_str.encode()).hexdigest()
+
+
+class BatchSubmission(BaseModel):
+    """A batch of code submissions to be evaluated."""
+    model_config = ConfigDict(frozen=True)
+    
+    submissions: List[CodeSubmission] = Field(description="List of code submissions to evaluate.")
+    
+    def get_hash(self) -> str:
+        """Generate a deterministic hash for this batch."""
+        # Hash each submission and combine
+        submission_hashes = [s.get_hash() for s in self.submissions]
+        combined = "|".join(submission_hashes)
+        return hashlib.sha256(combined.encode()).hexdigest()
 
 
 class TestResult(BaseModel):
@@ -88,4 +132,19 @@ class EvaluationResult(BaseModel):
     metadata: Dict[str, Any] = Field(
         default_factory=dict,
         description="Additional metadata about the evaluation."
+    )
+
+
+class BatchResult(BaseModel):
+    """Results for a batch of code submissions."""
+    model_config = ConfigDict(frozen=True)
+    
+    job_id: str = Field(description="The unique job ID (hash) for this batch.")
+    status: JobStatus = Field(description="Current status of the batch job.")
+    results: List[Optional[EvaluationResult]] = Field(description="Results for each submission, None if not yet evaluated.")
+    error: Optional[str] = Field(default=None, description="Error message if the batch failed.")
+    total_time: Optional[float] = Field(default=None, description="Total time taken for all evaluations.")
+    metadata: Dict[str, Any] = Field(
+        default_factory=dict,
+        description="Additional metadata about the batch evaluation."
     ) 
